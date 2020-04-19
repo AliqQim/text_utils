@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\submodule_common_lib\CommonUtils\CommonUtils.csproj" />
     <ProjectReference Include="..\TextUtils\TextUtils.csproj" />
   </ItemGroup>
 

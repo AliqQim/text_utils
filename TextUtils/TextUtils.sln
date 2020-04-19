@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextUtils", "TextUtils\Text
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextUtilsTests", "TextUtilsTests\TextUtilsTests.csproj", "{09C6F377-76A4-4004-9159-01B9B5B59FC9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonUtils", "..\submodule_common_lib\CommonUtils\CommonUtils.csproj", "{3D4E1D56-9438-46F5-9054-0E06107C1C2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{09C6F377-76A4-4004-9159-01B9B5B59FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09C6F377-76A4-4004-9159-01B9B5B59FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09C6F377-76A4-4004-9159-01B9B5B59FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D4E1D56-9438-46F5-9054-0E06107C1C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D4E1D56-9438-46F5-9054-0E06107C1C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D4E1D56-9438-46F5-9054-0E06107C1C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D4E1D56-9438-46F5-9054-0E06107C1C2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
