@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextUtils", "TextUtils\TextUtils.csproj", "{7B4F543E-ADE5-466D-8F00-F58941080501}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextUtils", "TextUtils\TextUtils.csproj", "{7B4F543E-ADE5-466D-8F00-F58941080501}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextUtilsTests", "TextUtilsTests\TextUtilsTests.csproj", "{09C6F377-76A4-4004-9159-01B9B5B59FC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7B4F543E-ADE5-466D-8F00-F58941080501}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B4F543E-ADE5-466D-8F00-F58941080501}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B4F543E-ADE5-466D-8F00-F58941080501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C6F377-76A4-4004-9159-01B9B5B59FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C6F377-76A4-4004-9159-01B9B5B59FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C6F377-76A4-4004-9159-01B9B5B59FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C6F377-76A4-4004-9159-01B9B5B59FC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
