@@ -4,17 +4,28 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using CommonUtils;
+using System.IO;
 
 namespace snoski.Tests
 {
     public class SnoskiConverterTests
     {
-        [Fact()]
-        public void ConvertTest()
+        [Theory]
+        [InlineData("Convert_ведущийпробелПередНомеромСноски_Заменено")]
+        public void ConvertTest(string testFolderName)
         {
-            string s = FileUtils.GetPathToCurrentAssemblyCsprojFolder();
+            string pathToProj = FileUtils.GetPathToCurrentAssemblyCsprojFolder();
+            string testFolderPath = $"{pathToProj}\\SnoskiConverterTestFiles\\{testFolderName}";
 
-            Assert.True(false, "This test needs an implementation");
+
+            string input = File.ReadAllText(Path.Combine(testFolderPath, "input.txt"));
+            var target = new SnoskiConverter();
+            var res = target.Convert(input);
+
+            Assert.Equal(
+                File.ReadAllText(Path.Combine(testFolderPath, "output.txt")),
+                res
+                );
         }
     }
 }
