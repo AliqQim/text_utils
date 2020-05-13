@@ -12,7 +12,7 @@ namespace snoski.Tests
         [Fact()]
         public void ConvertTest()
         {
-            string s = FileUtils.GetPathToCurrentAssemblyProjectUnderDebugFolder();
+            string s = FileUtils.GetPathToCurrentAssemblyCsprojFolder();
 
             Assert.True(false, "This test needs an implementation");
         }
