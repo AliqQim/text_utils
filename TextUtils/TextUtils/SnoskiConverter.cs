@@ -15,12 +15,18 @@ namespace snoski
 
         class SnoskaInfo
         {
+            public SnoskaInfo(int num, string text)
+            {
+                Num = num;
+                Text = text;
+            }
+
             public int Num { get; set; }
             public string Text { get; set; }
             public bool Used { get; set; }
         }
 
-        List<SnoskaInfo> _snoskaInfo;
+        List<SnoskaInfo>? _snoskaInfo;
 
         public string Convert(string input)
         {
@@ -54,11 +60,10 @@ namespace snoski
                     lastSnoskaLineIndex = lineBackwardsIterator;
 
                     snoskaTextLines.Reverse();
-                    _snoskaInfo.Add(new SnoskaInfo
-                    {
-                        Num = thisSnoskaNum,
-                        Text = string.Join(" ", snoskaTextLines.Where(x => !string.IsNullOrWhiteSpace(x)))
-                    });
+                    _snoskaInfo.Add(new SnoskaInfo(
+                        num: thisSnoskaNum,
+                        text: string.Join(" ", snoskaTextLines.Where(x => !string.IsNullOrWhiteSpace(x)))
+                    ));
 
                     snoskaTextLines.Clear();
 
