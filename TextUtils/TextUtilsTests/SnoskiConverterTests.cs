@@ -16,7 +16,7 @@ namespace snoski.Tests
         {
             public IEnumerator<object[]> GetEnumerator()
             {
-                return Directory.GetDirectories(GetPathToTestCasesFolders())
+                return Directory.GetDirectories(GetPathToPositiveTestCasesFolders())
                     .Select(x => new[] { new FileInfo(x).Name }).GetEnumerator();
 
             }
@@ -25,6 +25,10 @@ namespace snoski.Tests
                 => GetEnumerator();
         }
 
+        public static string GetPathToExceptionTestCasesFolders()
+            => Path.Combine(GetPathToTestCasesFolders(), "exceptions");
+        public static string GetPathToPositiveTestCasesFolders()
+            => Path.Combine(GetPathToTestCasesFolders(), "positives");
         public static string GetPathToTestCasesFolders()
         {
             string pathToProj = FileUtils.GetPathToCurrentAssemblyCsprojFolder();
@@ -33,10 +37,9 @@ namespace snoski.Tests
 
         [Theory]
         [ClassData(typeof(SnoskiTestCasesProvider))]
-        public void ConvertTest(string testFolderName)
+        public void ConvertPositiveTestcases(string testFolderName)
         {
-            string pathToProj = FileUtils.GetPathToCurrentAssemblyCsprojFolder();
-            string testFolderPath = Path.Combine(GetPathToTestCasesFolders(), testFolderName);
+            string testFolderPath = Path.Combine(GetPathToPositiveTestCasesFolders(), testFolderName);
 
 
             string input = File.ReadAllText(Path.Combine(testFolderPath, "input.txt"));
@@ -45,8 +48,20 @@ namespace snoski.Tests
 
             Assert.Equal(
                 File.ReadAllText(Path.Combine(testFolderPath, "output.txt")),
-                res
-                );
+                res);
+        }
+
+        [Theory]
+        [InlineData("Convert_НеиспользованнаяСноска_Исключение", typeof(UnusedSnoskaFoundException))]
+        [InlineData("Convert_СноскаНеНайдена_Исключение", typeof(SnoskaNotFoundException))]
+        public void Convert_NegativeTestcases(string testFolderName, Type expectedException)
+        {
+            string input = File.ReadAllText(
+                Path.Combine(GetPathToExceptionTestCasesFolders(), testFolderName, "input.txt"));
+
+            var target = new SnoskiConverter();
+            Assert.Throws(expectedException, () => target.Convert(input));
+
         }
     }
 }
