@@ -5,17 +5,38 @@ using System.Collections.Generic;
 using System.Text;
 using CommonUtils;
 using System.IO;
+using System.Collections;
+using System.Linq;
 
 namespace snoski.Tests
 {
     public class SnoskiConverterTests
     {
+        class SnoskiTestCasesProvider : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                return Directory.GetDirectories(GetPathToTestCasesFolders())
+                    .Select(x => new[] { new FileInfo(x).Name }).GetEnumerator();
+
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+                => GetEnumerator();
+        }
+
+        public static string GetPathToTestCasesFolders()
+        {
+            string pathToProj = FileUtils.GetPathToCurrentAssemblyCsprojFolder();
+            return $"{pathToProj}\\SnoskiConverterTestFiles";
+        }
+
         [Theory]
-        [InlineData("Convert_ведущийпробелПередНомеромСноски_Заменено")]
+        [ClassData(typeof(SnoskiTestCasesProvider))]
         public void ConvertTest(string testFolderName)
         {
             string pathToProj = FileUtils.GetPathToCurrentAssemblyCsprojFolder();
-            string testFolderPath = $"{pathToProj}\\SnoskiConverterTestFiles\\{testFolderName}";
+            string testFolderPath = Path.Combine(GetPathToTestCasesFolders(), testFolderName);
 
 
             string input = File.ReadAllText(Path.Combine(testFolderPath, "input.txt"));
