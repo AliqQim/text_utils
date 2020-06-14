@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\submodule_common_lib\CommonUtils\CommonUtils.csproj" />
-    <ProjectReference Include="..\TextUtils\TextUtils.csproj" />
+    <ProjectReference Include="..\TextUtils\Fb2ToReadAloudText.csproj" />
   </ItemGroup>
 
 </Project>
