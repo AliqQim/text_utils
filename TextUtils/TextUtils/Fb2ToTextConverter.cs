@@ -34,7 +34,7 @@ namespace Fb2ToReadAloudText
             var bodies = doc.SelectNodes("/m:FictionBook/m:body", nsMgr);
 
             //OPTIMIZE можно какой-нибудь стринг-билдер использовать
-            string bodiesTextRaw = string.Join("\n", bodies.OfType<XmlNode>().Select(n => n.InnerText));
+            string bodiesTextRaw = string.Join("\n", bodies.OfType<XmlNode>().Select(n => BodyToText(n)));
             string bodiesTextNoLongParagraphs = RemoveLongParagraph(bodiesTextRaw);
 
             return $"{bookTitle}\n\n" +
@@ -42,6 +42,12 @@ namespace Fb2ToReadAloudText
                 bodiesTextNoLongParagraphs;
 
         }
+
+        private string BodyToText(XmlNode body)
+        {
+            
+        }
+
 
         private string RemoveLongParagraph(string bodiesTextRaw)
         {
