@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -11,7 +12,6 @@ namespace Fb2ToReadAloudText
     {
         public string Convert(string fb2Xml)
         {
-
             var doc = new XmlDocument();
             doc.LoadXml(fb2Xml);
 
@@ -19,16 +19,34 @@ namespace Fb2ToReadAloudText
             nsMgr.AddNamespace("m", "http://www.gribuser.ru/xml/fictionbook/2.0");  //иначе не XPath теги не видит
 
             var author = doc.SelectSingleNode("/m:FictionBook/m:description/m:title-info/m:author", nsMgr);
-
-
-            throw new NotImplementedException();    //**!!
-
-            //var root = XElement.Parse(fb2Xml);
-            //var author = root.XPathSelectElement("/FictionBook");
-            //string authorName = $"{author.Element("last-name")} {author.Element("first-name")} {author.Element("middle-name")}"
-            //    .Trim();
-
+            string? authorName = null;
+            if (author != null)
+            {
+                authorName = $"{author.SelectSingleNode("m:last-name", nsMgr).InnerText} " +
+                    $"{author.SelectSingleNode("m:first-name", nsMgr).InnerText} " +
+                    $"{author.SelectSingleNode("m:middle-name", nsMgr).InnerText}"
+                    .Trim();
+            }
             
+            string? bookTitle = doc.SelectSingleNode("/m:FictionBook/m:description/m:title-info/m:book-title", nsMgr)
+                ?.InnerText;
+
+            var bodies = doc.SelectNodes("/m:FictionBook/m:body", nsMgr);
+
+            //OPTIMIZE можно какой-нибудь стринг-билдер использовать
+            string bodiesTextRaw = string.Join("\n", bodies.OfType<XmlNode>().Select(n => n.InnerText));
+            string bodiesTextNoLongParagraphs = RemoveLongParagraph(bodiesTextRaw);
+
+            return $"{bookTitle}\n\n" +
+                $"{authorName}\n\n" +
+                bodiesTextNoLongParagraphs;
+
+        }
+
+        private string RemoveLongParagraph(string bodiesTextRaw)
+        {
+            //IMPROVE: по идее, можно потом наумничать алгоритм, разбивающий реально только большие абзацы
+            return bodiesTextRaw.Replace(". ", ".\n");
         }
     }
 }
