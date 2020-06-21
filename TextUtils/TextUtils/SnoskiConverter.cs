@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fb2ToReadAloudText;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -153,30 +154,4 @@ namespace snoski
             
         }
     }
-
-    public class SnoskaException: Exception
-    {
-        public SnoskaException(string msg, Exception inner)
-            :base(msg, inner)
-        {}
-
-        public SnoskaException(string msg)
-            : base(msg)
-        { }
-    }
-    public class SnoskaNotFoundException : SnoskaException
-    {
-        public SnoskaNotFoundException(string msg, Exception inner)
-            : base(msg, inner)
-        { }
-    }
-
-    public class UnusedSnoskaFoundException : SnoskaException
-    {
-        public UnusedSnoskaFoundException(string msg)
-            : base(msg)
-        { }
-    }
-
-    
 }

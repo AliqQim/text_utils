@@ -34,6 +34,9 @@ namespace Fb2ToReadAloudText
 
             var bodies = doc.SelectNodes("/m:FictionBook/m:body", nsMgr);
 
+            if (bodies.Count == 0)
+                throw new Fb2BodyNotFound();
+
             //OPTIMIZE можно какой-нибудь стринг-билдер использовать
             string bodiesTextRaw = string.Join("\n", bodies.OfType<XmlNode>().Select(n => BodyToText(n)));
             string bodiesTextNoLongParagraphs = RemoveLongParagraph(bodiesTextRaw);

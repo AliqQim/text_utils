@@ -7,6 +7,7 @@ using CommonUtils;
 using System.IO;
 using System.Collections;
 using System.Linq;
+using Fb2ToReadAloudText;
 
 namespace snoski.Tests
 {
