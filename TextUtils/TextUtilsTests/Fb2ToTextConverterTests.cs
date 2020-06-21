@@ -13,6 +13,7 @@ namespace Fb2ToReadAloudText.Tests
         [Theory]
         [InlineData(@"FullXml\input.xml", @"FullXml\output.txt")]
         [InlineData(@"TitleTagsWrongLocation\input.xml", @"TitleTagsWrongLocation\output.txt")]
+        [InlineData(@"NoTitleTags\input.xml", @"NoTitleTags\output.txt")]
         public void ConvertTest(string inputPath, string expectedOutputPath)
         {
             string basePath = Path.Combine(
