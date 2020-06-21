@@ -9,4 +9,8 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\submodule_common_lib\CommonUtils\CommonUtils.csproj" />
+  </ItemGroup>
+
 </Project>

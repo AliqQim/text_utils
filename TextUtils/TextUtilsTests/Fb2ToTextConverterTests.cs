@@ -10,22 +10,28 @@ namespace Fb2ToReadAloudText.Tests
 {
     public class Fb2ToTextConverterTests
     {
-        [Fact()]
-        public void ConvertTest()
+        [Theory]
+        [InlineData(@"FullXml\input.xml", @"FullXml\output.txt")]
+        public void ConvertTest(string inputPath, string expectedOutputPath)
         {
-            string inputFileName = "input_fullXml.xml";
-
-            string input = File.ReadAllText(
-                Path.Combine(
-                    FileUtils.GetPathToCurrentAssemblyCsprojFolder(),
-                    "Fb2ToTextConverterTest",
-                    inputFileName)
-                );
+            string basePath = Path.Combine(
+                FileUtils.GetPathToCurrentAssemblyCsprojFolder(),
+                    "Fb2ToTextConverterTestFiles");
+            string input = PrepareForCompare(File.ReadAllText(
+                Path.Combine(basePath, inputPath)));
 
             var target = new Fb2ToTextConverter();
             string res = target.Convert(input);
 
-            Assert.True(false, "This test needs an implementation");
+            string expectedOutput = PrepareForCompare(File.ReadAllText(
+                Path.Combine(basePath, expectedOutputPath)));
+
+            Assert.Equal(expectedOutput, res);
+        }
+
+        private string PrepareForCompare(string s)
+        {
+            return s.Replace("\r\n", "\n");
         }
     }
 }

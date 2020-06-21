@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonUtils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,7 @@ namespace Fb2ToReadAloudText
 
         private string BodyToText(XmlNode body)
         {
-            
+            return TextUtils.StripTags(body.InnerXml);
         }
 
 
