@@ -12,26 +12,29 @@ namespace Fb2ToReadAloudText.Tests
     {
         [Theory]
         [InlineData(@"FullXml\input.xml", @"FullXml\output.txt")]
+        [InlineData(@"TitleTagsWrongLocation\input.xml", @"TitleTagsWrongLocation\output.txt")]
         public void ConvertTest(string inputPath, string expectedOutputPath)
         {
             string basePath = Path.Combine(
                 FileUtils.GetPathToCurrentAssemblyCsprojFolder(),
                     "Fb2ToTextConverterTestFiles");
-            string input = PrepareForCompare(File.ReadAllText(
-                Path.Combine(basePath, inputPath)));
+            string input = File.ReadAllText(
+                Path.Combine(basePath, inputPath));
 
             var target = new Fb2ToTextConverter();
             string res = target.Convert(input);
 
-            string expectedOutput = PrepareForCompare(File.ReadAllText(
-                Path.Combine(basePath, expectedOutputPath)));
+            string expectedOutput = File.ReadAllText(
+                Path.Combine(basePath, expectedOutputPath));
 
-            Assert.Equal(expectedOutput, res);
+            Assert.Equal(PrepareForCompare(expectedOutput),
+                PrepareForCompare(res));
         }
 
         private string PrepareForCompare(string s)
         {
-            return s.Replace("\r\n", "\n");
+            return s.Replace("\r\n", "\n")
+                .Trim('\n');
         }
     }
 }
