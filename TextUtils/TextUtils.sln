@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fb2ToReadAloudTextTests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonUtils", "..\submodule_common_lib\CommonUtils\CommonUtils.csproj", "{3D4E1D56-9438-46F5-9054-0E06107C1C2F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6F893806-5F29-4BEF-8357-0BD6B96C5840}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonUtilsTests", "..\submodule_common_lib\CommonUtilsTests\CommonUtilsTests.csproj", "{514C943B-8525-4CDF-9167-C46ECBF59339}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,17 @@ Global
 		{3D4E1D56-9438-46F5-9054-0E06107C1C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D4E1D56-9438-46F5-9054-0E06107C1C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D4E1D56-9438-46F5-9054-0E06107C1C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{514C943B-8525-4CDF-9167-C46ECBF59339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{514C943B-8525-4CDF-9167-C46ECBF59339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{514C943B-8525-4CDF-9167-C46ECBF59339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{514C943B-8525-4CDF-9167-C46ECBF59339}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09C6F377-76A4-4004-9159-01B9B5B59FC9} = {6F893806-5F29-4BEF-8357-0BD6B96C5840}
+		{514C943B-8525-4CDF-9167-C46ECBF59339} = {6F893806-5F29-4BEF-8357-0BD6B96C5840}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9A6975EA-E755-4F53-8461-F7A7C35B6E24}
