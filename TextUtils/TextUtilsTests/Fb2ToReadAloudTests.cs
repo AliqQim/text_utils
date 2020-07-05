@@ -23,8 +23,6 @@ namespace Fb2ToReadAloudText.Tests
                         FileUtils.GetPathToCurrentAssemblyCsprojFolder(),
                         fb2Path)));
 
-            File.WriteAllText(@"D:\Projects\text_utils\TextUtils\TextUtilsTests\Fb2ToReadAloudTests\ConvertToTextTest\expectedOutput.txt", res);
-
             string expectedRes = File.ReadAllText(
                     Path.Combine(
                         FileUtils.GetPathToCurrentAssemblyCsprojFolder(),
