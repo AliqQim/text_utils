@@ -23,9 +23,9 @@ namespace Fb2ToReadAloudText
             string? authorName = null;
             if (author != null)
             {
-                authorName = $"{author.SelectSingleNode("m:last-name", nsMgr).InnerText} " +
-                    $"{author.SelectSingleNode("m:first-name", nsMgr).InnerText} " +
-                    $"{author.SelectSingleNode("m:middle-name", nsMgr).InnerText}"
+                authorName = $"{author.SelectSingleNode("m:last-name", nsMgr)?.InnerText} " +
+                    $"{author.SelectSingleNode("m:first-name", nsMgr)?.InnerText} " +
+                    $"{author.SelectSingleNode("m:middle-name", nsMgr)?.InnerText}"
                     .Trim();
             }
             

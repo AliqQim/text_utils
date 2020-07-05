@@ -6,8 +6,11 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace snoski
+namespace Fb2ToReadAloudText
 {
+    //исторически сложилось, что этот класс умеет оперировать уже текстом, 
+    //произведенным из FB2. поэтому в текст, принимаемый этим классом FB2 
+    //преобразуется снаружи
     public class SnoskiConverter
     {
 
