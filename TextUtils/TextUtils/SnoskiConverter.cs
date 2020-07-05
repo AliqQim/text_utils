@@ -11,7 +11,7 @@ namespace Fb2ToReadAloudText
     //исторически сложилось, что этот класс умеет оперировать уже текстом, 
     //произведенным из FB2. поэтому в текст, принимаемый этим классом FB2 
     //преобразуется снаружи
-    public class SnoskiConverter
+    internal class SnoskiConverter
     {
 
         static Regex _number = new Regex(@"^\s*(\d+)\s*$", RegexOptions.Compiled);

@@ -28,6 +28,9 @@ namespace Fb2ToReadAloudText.Tests
                         FileUtils.GetPathToCurrentAssemblyCsprojFolder(),
                         expectedOutputPath));
 
+            Assert.Equal(TestHelpers.SimplifyWhitespaces(expectedRes),
+                TestHelpers.SimplifyWhitespaces(res));
+
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Xml.XPath;
 
 namespace Fb2ToReadAloudText
 {
-    public class Fb2ToTextConverter
+    internal class Fb2ToTextConverter
     {
         public string Convert(string fb2Xml)
         {
