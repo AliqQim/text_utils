@@ -1,0 +1,3 @@
+[submodule "submodule_common_lib"]
+	path = submodule_common_lib
+	url = https://github.com/AliqQim/aliqqim_common_lib.git
