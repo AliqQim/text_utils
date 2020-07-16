@@ -8,13 +8,13 @@ namespace Fb2ToReadAloudText
     {
         public string FootnoteLeftDelimiterText 
         { 
-            get => SnoskiConverter.FootnoteLeftDelimiterText;
-            set => SnoskiConverter.FootnoteLeftDelimiterText = value;
+            get => FootnoteConverter.FootnoteLeftDelimiterText;
+            set => FootnoteConverter.FootnoteLeftDelimiterText = value;
         }
         public string FootnoteRightDelimiterText
         {
-            get => SnoskiConverter.FootnoteRightDelimiterText;
-            set => SnoskiConverter.FootnoteRightDelimiterText = value;
+            get => FootnoteConverter.FootnoteRightDelimiterText;
+            set => FootnoteConverter.FootnoteRightDelimiterText = value;
         }
 
         private Fb2ToTextConverter? _fb2ToTextConverter;
@@ -25,17 +25,17 @@ namespace Fb2ToReadAloudText
         }
 
 
-        private SnoskiConverter? _snoskiConverter;
-        internal SnoskiConverter SnoskiConverter
+        private FootnotesConverter? _footnotesConverter;
+        internal FootnotesConverter FootnoteConverter
         {
-            get => _snoskiConverter ??= new SnoskiConverter();
-            set => _snoskiConverter = value;
+            get => _footnotesConverter ??= new FootnotesConverter();
+            set => _footnotesConverter = value;
         }
 
         public string ConvertToText(string fb2Xml)
         {
             string intermediateText = Fb2ToTextConverter.Convert(fb2Xml);
-            return SnoskiConverter.Convert(intermediateText);
+            return FootnoteConverter.Convert(intermediateText);
         }
 
 

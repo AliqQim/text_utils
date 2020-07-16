@@ -20,16 +20,16 @@ namespace Fb2ToReadAloudText
         public Fb2BodyNotFound() :
             base("в FB2-файле не обнаружена секция Body") { }
     }
-    public class SnoskaNotFoundException : Fb2ToReadException
+    public class FootnoteNotFoundException : Fb2ToReadException
     {
-        public SnoskaNotFoundException(string msg, Exception inner)
+        public FootnoteNotFoundException(string msg, Exception inner)
             : base(msg, inner)
         { }
     }
 
-    public class UnusedSnoskaFoundException : Fb2ToReadException
+    public class UnusedFootnoteFoundException : Fb2ToReadException
     {
-        public UnusedSnoskaFoundException(string msg)
+        public UnusedFootnoteFoundException(string msg)
             : base(msg)
         { }
     }
