@@ -6,6 +6,17 @@ namespace Fb2ToReadAloudText
 {
     public class Fb2ToReadAloud
     {
+        public string FootnoteLeftDelimiterText 
+        { 
+            get => SnoskiConverter.FootnoteLeftDelimiterText;
+            set => SnoskiConverter.FootnoteLeftDelimiterText = value;
+        }
+        public string FootnoteRightDelimiterText
+        {
+            get => SnoskiConverter.FootnoteRightDelimiterText;
+            set => SnoskiConverter.FootnoteRightDelimiterText = value;
+        }
+
         private Fb2ToTextConverter? _fb2ToTextConverter;
         internal Fb2ToTextConverter Fb2ToTextConverter 
         {

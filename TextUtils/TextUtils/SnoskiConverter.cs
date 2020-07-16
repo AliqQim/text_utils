@@ -13,6 +13,8 @@ namespace Fb2ToReadAloudText
     //преобразуется снаружи
     internal class SnoskiConverter
     {
+        public string FootnoteLeftDelimiterText { get; set; } = "**";
+        public string FootnoteRightDelimiterText { get; set; } = "**";
 
         static Regex _number = new Regex(@"^\s*(\d+)\s*$", RegexOptions.Compiled);
         const int NUMBER_GROUP_INDEX = 1;
@@ -31,6 +33,8 @@ namespace Fb2ToReadAloudText
         }
 
         List<SnoskaInfo>? _snoskaInfo;
+
+       
 
         public string Convert(string input)
         {
@@ -134,7 +138,7 @@ namespace Fb2ToReadAloudText
                     break;
 
                 int numOfSnoska = int.Parse(match.Groups[1].Value);
-                string snoskaText = $" **{UseSnoskaText(numOfSnoska)}**";
+                string snoskaText = $" {FootnoteLeftDelimiterText}{UseSnoskaText(numOfSnoska)}{FootnoteRightDelimiterText}";
 
                 result = result.Substring(0, match.Index) + snoskaText + result.Substring(match.Index + match.Length);
             }
